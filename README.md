@@ -37,7 +37,7 @@ text = [
 ]
 
 max_vocab_size = 5000
-corpus = Corpus(data = "your text", mode = "a", max_vocabulary_size = max_vocab_size, 
+corpus = Corpus(data = text, mode = "a", max_vocabulary_size = max_vocab_size, 
                 max_line = 0, minimum_freq = 0)
 ```
 
