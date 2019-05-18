@@ -9,6 +9,7 @@ This is a Quick Thought, implemented by pytorch.
 - python 3.6.6
 - pytorch-cpu 1.0.0
 - numpy 1.15.4
+- gensim 3.4.0
 
 ## quick example
 
