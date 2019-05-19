@@ -130,6 +130,7 @@ class quick_thought(nn.Module):
         #select target sentence
         target_sentences = [corpus.tokenized_corpus[i] for i in batch[0]]
         target_sentences, target_seq_lengths = self.sentence_padding(target_sentences)
+        u = self.f(target_sentences, target_seq_lengths, w2v)
 
         context_sentences, context_seq_lengths = self.sentence_padding(corpus.tokenized_corpus)
         v = self.g(context_sentences, context_seq_lengths, w2v)
