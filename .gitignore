@@ -2,5 +2,6 @@ jupyter
 __pycache__
 .ipynb_checkpoints
 *.ipynb
+*.model
 data
 embed
