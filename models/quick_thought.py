@@ -33,6 +33,10 @@ class encoder(nn.Module):
         return ret
  
     def forward(self, sentences, seq_lengths, w2v):
+        if len(sentences) < self.batch_size:
+            self.hidden = torch.zeros(1, len(sentences), self.hidden_dim)
+            self.cell = torch.zeros(1, len(sentences), self.hidden_dim)
+    
         s = []
         for sentence in sentences:
             ws = []
@@ -126,7 +130,6 @@ class quick_thought(nn.Module):
         #select target sentence
         target_sentences = [corpus.tokenized_corpus[i] for i in batch[0]]
         target_sentences, target_seq_lengths = self.sentence_padding(target_sentences)
-        u = self.f(target_sentences, target_seq_lengths, w2v)
 
         context_sentences, context_seq_lengths = self.sentence_padding(corpus.tokenized_corpus)
         v = self.g(context_sentences, context_seq_lengths, w2v)
@@ -160,7 +163,7 @@ class quick_thought(nn.Module):
         #padding
         sentences_pad = []
         for s in sentences:
-            while len(s) <= seq_lengths_max:
+            while len(s) < seq_lengths_max:
                 s = np.append(s,"99999999999") #"99999999999" is padding word
             sentences_pad.append(s)
 
