@@ -160,7 +160,7 @@ class quick_thought(nn.Module):
         #padding
         sentences_pad = []
         for s in sentences:
-            if len(s) != seq_lengths_max:
+            while len(s) <= seq_lengths_max:
                 s = np.append(s,"99999999999") #"99999999999" is padding word
             sentences_pad.append(s)
 
